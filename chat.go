@@ -155,7 +155,8 @@ func (api *Client) UpdateMessage(channel, timestamp, text string) (string, strin
 	values := url.Values{
 		"token":   {api.config.token},
 		"channel": {channel},
-		"text":    {escapeMessage(text)},
+		"parse":   {"none"},
+		"text":    {text},
 		"ts":      {timestamp},
 	}
 	response, err := chatRequest("chat.update", values, api.debug)
